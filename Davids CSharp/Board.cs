@@ -2,7 +2,7 @@
 
 namespace Davids_Example
 {
-    internal class Board
+    public class Board
     {
         public int Width { get; private set; }
         public int Height { get; private set; }

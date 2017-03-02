@@ -11,7 +11,7 @@ namespace Davids_Example
             const int ScreenWidth = 60;
 
             // Number of rows we wish to display down the screen
-            const int ScreenHeight = 20;
+            const int ScreenHeight = 24;
 
             // Blinker (period 2)
             var board = new Board(ScreenWidth, ScreenHeight);
