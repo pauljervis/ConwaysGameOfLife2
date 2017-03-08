@@ -15,10 +15,10 @@ namespace SiPaul
             cell = new bool[width, height];
         }
 
-        //public void SetCell(int x, int y, bool status)
-        //{
-        //    cell[x, y] = status;
-        //}
+        public void GetCell()
+        {
+            return cell;
+        }
 
         public int this[int x, int y]
         {
