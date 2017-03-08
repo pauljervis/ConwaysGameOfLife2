@@ -19,7 +19,7 @@ namespace SiPaul
 
         public MainWindow()
         {
-            bool[,] cells = _lifeManager.getCell();
+            bool[,] cells = _lifeManager.GetCell();
             List<List<bool>> lsts = new List<List<bool>>();
 
             for (int i = 0; i < cells.GetLength(0); i++)
@@ -37,12 +37,12 @@ namespace SiPaul
             lst.ItemsSource = lsts;
         }
 
-		public void MenuItem_Reset(object sender, CanExecuteRoutedEventArgs e)
+		public void MenuItem_Reset(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		public void MenuItem_Start(object sender, CanExecuteRoutedEventArgs e)
+		public void MenuItem_Start(object sender, RoutedEventArgs e)
 		{
 		}
     }

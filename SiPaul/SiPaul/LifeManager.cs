@@ -15,7 +15,7 @@ namespace SiPaul
             cell = new bool[width, height];
         }
 
-        public void GetCell()
+        public bool[,] GetCell()
         {
             return cell;
         }

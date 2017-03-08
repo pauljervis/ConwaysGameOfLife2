@@ -6,11 +6,6 @@
         xmlns:local="clr-namespace:SiPaul"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-	<Menu Width="Auto" Height="20" Background="#FFA9D1F4" DockPanel.Dock="Top">
-		<MenuItem Header="Start" Click="MenuItem_Start" />
-		<MenuItem Header="Reset" Click="MenuItem_Reset" />
-	</Menu>
-
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate_Level2">
 
@@ -25,13 +20,14 @@
                     </Setter>
                 </DataTrigger>
             </DataTemplate.Triggers>
-            <Button Content="{Binding}" Height="40" Width="50" Margin="4,4,4,4"/>
         </DataTemplate>
 
         <DataTemplate x:Key="DataTemplate_Level1">
             <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
+<!--
+                        -->
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
@@ -40,7 +36,14 @@
 
     </Window.Resources>
     <Grid>
-        <ItemsControl x:Name="lst" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
-    </Grid>
+        <Menu Width="Auto" Height="20" Background="#FFA9D1F4" DockPanel.Dock="Top">
+            <MenuItem Header="Start" Click="MenuItem_Start" />
 
+            <MenuItem Header="Reset" Click="MenuItem_Reset" />
+        </Menu>
+
+        <Grid>
+            <ItemsControl x:Name="lst" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
+        </Grid>
+    </Grid>
 </Window>
