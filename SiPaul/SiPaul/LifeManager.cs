@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SiPaul
 {
-    class LifeManager
+    public class LifeManager
     {
-        readonly bool[,] cell;
+        private bool[,] cell;
 
         public LifeManager(int width, int height)
         {
@@ -24,27 +24,36 @@ namespace SiPaul
         {
             get
             {
-                return cell[x, y] ? 1 : 0;
+                return 
+                    x > -1 && 
+                    x < cell.GetLength(0) && 
+                    y > -1 && 
+                    y < cell.GetLength(1) && 
+                    cell[x, y] ? 1 : 0;
             }
             set
             {
-                cell[x, y] = value > 0;
+                if(x>-1 && x<cell.GetLength(0) && y >-1 && y<cell.GetLength(1))
+                    cell[x, y] = value > 0;
             }
         }
 
-        public void Step()
+        public bool[,] Step()
         {
+            bool[,] nextcell = new bool[cell.GetLength(0), cell.GetLength(1)];
             for (int i = 0; i < cell.GetLength(0); i++)
             {
                 for (int j = 0; j < cell.GetLength(1); j++)
                 {
-                    int count = (this[i - 1, j - 1] + this[i - 1, j] + this[i - 1, j + 1] + this[i, j - 1] + this[i, j] + this[i, j + 1] + this[i + 1, j - 1] + this[i + 1, j] + this[i + 1, j + 1]);
-                    cell[i, j] = checkAlive(cell[i, j], count);
+                    int count = (this[i - 1, j - 1] + this[i - 1, j] + this[i - 1, j + 1] + this[i, j - 1] + this[i, j + 1] + this[i + 1, j - 1] + this[i + 1, j] + this[i + 1, j + 1]);
+                    nextcell[i, j] = CheckAlive(cell[i, j], count);
                 }
             }
+            cell = nextcell;
+            return cell;
         }
 
-        public bool checkAlive(bool current, int siblingCount)
+        public static bool CheckAlive(bool current, int siblingCount)
         {
             return (siblingCount == 3 || current && siblingCount == 2);
         }
